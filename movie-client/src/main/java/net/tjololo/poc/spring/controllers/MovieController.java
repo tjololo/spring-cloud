@@ -32,7 +32,7 @@ public class MovieController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Collection<Movie> getMovies() {
-        return getMoviesFromRepository("?projection=movies");
+        return getMoviesFromRepository("?projection=movie");
     }
 
     @RequestMapping(value = "titles", method = RequestMethod.GET)
