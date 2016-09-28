@@ -32,19 +32,6 @@ public class MovieController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Collection<Movie> getMovies() {
-        return getMoviesFromRepository();
-    }
-
-    @RequestMapping(value = "titles", method = RequestMethod.GET)
-    public Collection<String> getTitles() {
-        return getMoviesFromRepository()
-                .stream()
-                .map(Movie::getTitle)
-                .map(String::trim)
-                .collect(Collectors.toList());
-    }
-
-    private Collection<Movie> getMoviesFromRepository() {
         return restTemplate
                 .exchange(
                         repositoryURI + "/movies",
@@ -55,5 +42,14 @@ public class MovieController {
                 )
                 .getBody()
                 .getContent();
+    }
+
+    @RequestMapping(value = "titles", method = RequestMethod.GET)
+    public Collection<String> getTitles() {
+        return getMovies()
+                .stream()
+                .map(Movie::getTitle)
+                .map(String::trim)
+                .collect(Collectors.toList());
     }
 }
