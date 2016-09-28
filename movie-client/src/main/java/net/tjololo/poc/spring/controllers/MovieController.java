@@ -34,7 +34,7 @@ public class MovieController {
     public Collection<Movie> getMovies() {
         return restTemplate
                 .exchange(
-                        repositoryURI + "/movies",
+                        repositoryURI + "/movies?projection=movies",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<Resources<Movie>>() {
