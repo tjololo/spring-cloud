@@ -1,5 +1,6 @@
 package net.tjololo.poc.spring.controllers;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import net.tjololo.poc.spring.transferobjects.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +34,13 @@ public class MovieController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "fallbackMovies")
     public Collection<Movie> getMovies() {
         return getMoviesFromRepository("?projection=movie");
     }
 
     @RequestMapping(value = "titles", method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "fallbackString")
     public Collection<String> getTitles() {
         return getMoviesFromRepository("")
                 .stream()
@@ -55,5 +60,13 @@ public class MovieController {
                 )
                 .getBody()
                 .getContent();
+    }
+
+    public Collection<Movie> fallbackMovies() {
+        return Collections.emptyList();
+    }
+
+    public Collection<String> fallbackTitle() {
+        return Collections.emptyList();
     }
 }
