@@ -62,11 +62,11 @@ public class MovieController {
                 .getContent();
     }
 
-    public Collection<Movie> fallbackMovies() {
+    private Collection<Movie> fallbackMovies() {
         return Collections.emptyList();
     }
 
-    public Collection<String> fallbackTitle() {
+    private Collection<String> fallbackTitle() {
         return Collections.emptyList();
     }
 }
