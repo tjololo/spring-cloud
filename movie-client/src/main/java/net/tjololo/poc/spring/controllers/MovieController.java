@@ -58,6 +58,7 @@ public class MovieController {
                 .getContent()
                 .stream()
                 .map(Movie::getTitle)
+                .map(String::trim)
                 .collect(Collectors.toList());
     }
 }
