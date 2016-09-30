@@ -1,2 +1,9 @@
 server:
-  port: 9713
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+logging:
+  level.com.netflix.eureka: OFF
+  level.com.netflix.discovery: OFF
