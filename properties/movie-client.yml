@@ -2,3 +2,6 @@ server:
   port: 8080
 repository:
   uri: http://localhost:8181
+spring:
+  application:
+    name: movie-client
