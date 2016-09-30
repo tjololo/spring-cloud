@@ -40,7 +40,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "titles", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallbackString")
+    @HystrixCommand(fallbackMethod = "fallbackTitle")
     public Collection<String> getTitles() {
         return getMoviesFromRepository("")
                 .stream()
@@ -52,7 +52,7 @@ public class MovieController {
     private Collection<Movie> getMoviesFromRepository(String requestParams) {
         return restTemplate
                 .exchange(
-                        repositoryURI + "/movies" + requestParams,
+                        "http://movie-registry/movies" + requestParams,
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<Resources<Movie>>() {
