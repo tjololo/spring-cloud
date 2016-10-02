@@ -20,12 +20,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/")
 public class MovieController {
     private MovieFeignService movieFeignService;
-    private String repositoryURI;
 
     @Autowired
-    public MovieController(MovieFeignService movieFeignService, @Value("${repository.uri}") String repositoryURI) {
+    public MovieController(MovieFeignService movieFeignService) {
         this.movieFeignService = movieFeignService;
-        this.repositoryURI = repositoryURI;
     }
 
     @RequestMapping(value = "movies", method = RequestMethod.GET)
