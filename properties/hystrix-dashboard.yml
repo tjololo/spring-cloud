@@ -3,3 +3,7 @@ server:
 spring:
   application:
     name: hystrix-dashboard
+turbine:
+  aggregator:
+    clusterConfig: SAMPLE-HYSTRIX-AGGREGATE
+  appConfig: SAMPLE-HYSTRIX-AGGREGATE
