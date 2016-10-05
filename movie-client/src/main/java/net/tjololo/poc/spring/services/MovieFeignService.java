@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by tjololo on 30.09.2016.
  */
-@FeignClient(serviceId = "movie-registry")
+@FeignClient(serviceId = "movie-registry", fallback = HystrixClientFallback.class)
 public interface MovieFeignService {
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
-    @LoadBalanced
     Resources<Movie> findAll();
 
     @RequestMapping(value = "/movies?projection={projection}", method = RequestMethod.GET)
-    @LoadBalanced
     Resources<Movie> findAllProjections(@RequestParam("projection") String projection);
 }

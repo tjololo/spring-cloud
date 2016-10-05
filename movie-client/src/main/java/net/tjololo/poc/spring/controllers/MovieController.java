@@ -27,13 +27,11 @@ public class MovieController {
     }
 
     @RequestMapping(value = "movies", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallbackMovies")
     public Collection<Movie> getMovies() {
         return movieFeignService.findAllProjections("movie").getContent();
     }
 
     @RequestMapping(value = "movies/titles", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallbackTitle")
     public Collection<String> getTitles() {
         return movieFeignService.findAll()
                 .getContent()
@@ -41,13 +39,5 @@ public class MovieController {
                 .map(Movie::getTitle)
                 .map(String::trim)
                 .collect(Collectors.toList());
-    }
-
-    private Collection<Movie> fallbackMovies() {
-        return Collections.emptyList();
-    }
-
-    private Collection<String> fallbackTitle() {
-        return Collections.emptyList();
     }
 }
