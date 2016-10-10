@@ -3,3 +3,8 @@ server:
 spring:
   application:
     name: movie-client
+---
+spring:
+  profiles: openshift
+server:
+  port: 8080

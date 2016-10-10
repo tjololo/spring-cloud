@@ -7,3 +7,8 @@ eureka:
 logging:
   level.com.netflix.eureka: OFF
   level.com.netflix.discovery: OFF
+---
+spring:
+  profiles: openshift
+server:
+  port: 8080

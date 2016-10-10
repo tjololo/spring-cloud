@@ -5,3 +5,8 @@ spring:
     name: movie-registry
 my:
   var: Hello World
+---
+spring:
+  profiles: openshift
+server:
+  port: 8080
