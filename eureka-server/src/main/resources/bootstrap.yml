@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: eureka-server
+---
+spring:
+  profiles: openshift
+  cloud:
+    config:
+      uri: http://config-server:8080
