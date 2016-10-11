@@ -10,3 +10,6 @@ spring:
   profiles: openshift
 server:
   port: 8080
+eureka:
+  client:
+    service-url: http://eureka-server:8080/eureka
