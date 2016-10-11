@@ -15,5 +15,4 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka-server:8080/eureka
   instance:
-    hostname: http://movie-repository-spring-cloud.apps.10.2.2.2.xip.io
-    nonSecurePort: 80
+    nonSecurePort: 8080
