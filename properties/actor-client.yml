@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: actor-client
+---
+spring:
+  profiles: openshift
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8080/eureka
+  instance:
+    hostname: actor-client-spring-cloud.apps.10.2.2.2.xip.io
+    nonSecurePort: 80
