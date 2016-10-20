@@ -1,0 +1,10 @@
+server:
+  port: 8082
+zuul:
+  routes:
+    movies:
+      path: /movies/**
+      serviceId: movie-client
+    actors:
+      path: /actors/**
+      serviceId: actor-client
