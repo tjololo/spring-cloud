@@ -2,10 +2,10 @@ server:
   port: 8484
 spring:
   application:
-    name: hystrix-dashboard
+    name: turbine
 turbine:
-  appConfig: movie-client
-  clusterNameExpression: 'default'
+  appConfig: movie-client,actor-client
+  clusterNameExpression: new String("default")
 
 ---
 spring:
