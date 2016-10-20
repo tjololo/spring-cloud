@@ -1,0 +1,20 @@
+server:
+  port: 8383
+spring:
+  application:
+    name: hystrix-dashboard
+turbine:
+  appConfig: movie-client
+  clusterNameExpression: 'default'
+
+---
+spring:
+  profiles: openshift
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8080/eureka
+  instance:
+    nonSecurePort: 8080
